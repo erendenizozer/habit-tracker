@@ -18,9 +18,14 @@ def menu():
         try:
             input_num = int(input("Enter a number: "))
             if input_num == 1:
-                new_habit = input("Enter your new habit: ")
-                add_habit(new_habit)
-                print(f"Added new habit: {new_habit}")
+                new_habit = input("Enter your new habit: ").capitalize()
+                for habit in habits:
+                    if habit["name"].lower() == new_habit.lower():
+                        print("This habit already exists")
+                        break
+                else:
+                    add_habit(new_habit)
+                    print(f"Added new habit: {new_habit}")
             elif input_num == 2:
              completed_habit = input("Enter the complated habits name:")
              complete_habit(completed_habit)
