@@ -5,7 +5,7 @@ def add_habit(name):
 
 def complete_habit(name):
     for habit in habits:
-        if habit["name"] == name:
+        if habit["name"].lower() == name.lower():
             habit["days"] += 1
 
 def show_habits():
@@ -28,16 +28,22 @@ def menu():
                     print(f"Added new habit: {new_habit}")
             elif input_num == 2:
              completed_habit = input("Enter the complated habits name:")
-             complete_habit(completed_habit)
+             for habit in habits:
+                if completed_habit.lower() == habit["name"].lower():
+                    complete_habit(completed_habit)
+                    print(f"Completed the habit {completed_habit}!")
+                    break
+                else:
+                   print(f"Couldn't find a habit named {completed_habit}")
             elif input_num == 3:
                unwanted_habit = input("Enter the habit you want to delete: ")
                for habit in habits:
                   if unwanted_habit.lower() == habit["name"].lower():
                      habits.remove(habit)
-                     print("Deleted the habit")
+                     print(f"Deleted the habit {unwanted_habit}")
                      break
                   else:
-                     print(f"Couldn't find a habit name {unwanted_habit}")
+                     print(f"Couldn't find a habit named {unwanted_habit}")
             elif input_num == 4:
              show_habits()
             elif input_num == 5:
