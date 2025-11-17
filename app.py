@@ -14,7 +14,7 @@ def show_habits():
 
 def menu():
     while True:
-        print("\n1. Add Habit\n2. Complete Habit\n3. Show Progress\n4. Quit")
+        print("\n1. Add Habit\n2. Complete Habit\n3. Delete Habit\n4. Show Progress\n5. Quit")
         try:
             input_num = int(input("Enter a number: "))
             if input_num == 1:
@@ -30,8 +30,17 @@ def menu():
              completed_habit = input("Enter the complated habits name:")
              complete_habit(completed_habit)
             elif input_num == 3:
-             show_habits()
+               unwanted_habit = input("Enter the habit you want to delete: ")
+               for habit in habits:
+                  if unwanted_habit.lower() == habit["name"].lower():
+                     habits.remove(habit)
+                     print("Deleted the habit")
+                     break
+                  else:
+                     print(f"Couldn't find a habit name {unwanted_habit}")
             elif input_num == 4:
+             show_habits()
+            elif input_num == 5:
              print("Bye")
              break
             else:
