@@ -12,11 +12,6 @@ def show_habits():
     for habit in habits:
         print(f"{habit['name']} — {habit['days']} days")
 
-def find_habit():
-   if habit not in habits:
-      print("That habit does not exist.")
-      
-
 def menu():
     while True:
         print("\n1. Add Habit\n2. Complete Habit\n3. Delete Habit\n4. Show Progress\n5. Quit")
@@ -38,8 +33,8 @@ def menu():
                     complete_habit(completed_habit)
                     print(f"Completed the habit {completed_habit}!")
                     break
-             else:
-                print(f"Couldn't find a habit named {completed_habit}")
+                else:
+                   print(f"Couldn't find a habit named {completed_habit}")
             elif input_num == 3:
                unwanted_habit = input("Enter the habit you want to delete: ")
                for habit in habits:
@@ -47,8 +42,8 @@ def menu():
                      habits.remove(habit)
                      print(f"Deleted the habit {unwanted_habit}")
                      break
-               else:
-                print(f"Couldn't find a habit named {unwanted_habit}")
+                  else:
+                     print(f"Couldn't find a habit named {unwanted_habit}")
             elif input_num == 4:
              show_habits()
             elif input_num == 5:
@@ -61,3 +56,4 @@ def menu():
 
              
 menu()
+
